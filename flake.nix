@@ -34,7 +34,7 @@
           quarkus --version
 
           echo ""
-          echo "✅ You may now use 'quarkus' CLI tool."
+          echo "✅ You may now use 'quarkus' CLI tool. See ./README.md for more."
           echo ""
         '';
       };
