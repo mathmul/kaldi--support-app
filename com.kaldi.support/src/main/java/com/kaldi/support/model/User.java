@@ -1,5 +1,7 @@
 package com.kaldi.support.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import io.quarkus.security.jpa.Password;
 import io.quarkus.security.jpa.Roles;
@@ -18,6 +20,7 @@ public class User extends PanacheEntity {
 
     @Password
     @Column(nullable = false)
+    @JsonIgnore
     public String password;
 
     @Roles
@@ -25,7 +28,7 @@ public class User extends PanacheEntity {
     public String roleString;
 
     @Transient
-    public UserRole getRole() {
+    public UserRole role() {
         return UserRole.valueOf(roleString);
     }
 

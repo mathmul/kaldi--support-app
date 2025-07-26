@@ -33,4 +33,5 @@ Added later in that order
 
 quarkus extension add quarkus-security
 quarkus extension add quarkus-security-jpa
+quarkus extension add io.quarkus:quarkus-jackson
 ```
