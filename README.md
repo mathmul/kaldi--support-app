@@ -38,9 +38,10 @@ App created with:
 quarkus create app com.kaldi.support \
   --no-code \
   --extensions="resteasy-reactive,jdbc-postgresql,hibernate-orm-panache"
+```
 
-Added later in that order
-
+Added later in this order:
+```shell
 quarkus extension add quarkus-security
 quarkus extension add quarkus-security-jpa
 quarkus extension add io.quarkus:quarkus-jackson
