@@ -8,6 +8,15 @@ cd com.kaldi.support
 quarkus dev
 ```
 
+### Install Nix
+
+[Nix](https://nixos.org/download.html) package manager
+    - [MacOS](https://nixcademy.com/posts/nix-on-macos/) - Install via the official installer
+    - [Linux](https://nixos.org/download.html#nix-install-linux) - Use the recommended multi-user installation
+    ```bash
+    sh <(curl -L https://nixos.org/nix/install) --daemon
+    ```
+
 ### Database
 
 See application.properties (quarkus.datasource.devservices.*) for DB credentials.
