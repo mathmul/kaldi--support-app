@@ -1,1 +1,3 @@
 .quarkus/
+.vscode/*
+!.vscode/launch.json

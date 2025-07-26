@@ -33,6 +33,29 @@
           echo "🔵 quarkus --version"
           quarkus --version
 
+          # Auto-generate VS Code Java settings if missing
+          if [ ! -f .vscode/settings.json ]; then
+            mkdir -p .vscode
+            JDK_PATH=$(readlink -f $(dirname $(which java))/..)
+
+            cat > .vscode/settings.json <<'EOF'
+{
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-21",
+      "path": "$JDK_PATH",
+      "default": true,
+    }
+  ],
+  "java.import.gradle.enabled": false,
+  "java.jdt.ls.java.home": "$JDK_PATH",
+}
+EOF
+
+            echo ""
+            echo "✅ Java path written to ./.vscode/settings.json"
+          fi
+
           echo ""
           echo "✅ You may now use 'quarkus' CLI tool. See ./README.md for more."
           echo ""
