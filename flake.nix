@@ -57,6 +57,11 @@ EOF
           fi
 
           echo ""
+          echo "Setting ENV VARS..."
+          export DB_USERNAME=postgres && echo "    DB_USERNAME=postgres"
+          export DB_PASSWORD=postgres && echo "    DB_PASSWORD=postgres"
+
+          echo ""
           echo "✅ You may now use 'quarkus' CLI tool. See ./README.md for more."
           echo ""
         '';
