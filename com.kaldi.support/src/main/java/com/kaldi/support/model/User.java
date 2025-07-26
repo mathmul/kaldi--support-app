@@ -21,7 +21,15 @@ public class User extends PanacheEntity {
     public String password;
 
     @Roles
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    public String role;
+    @Column(name = "role", nullable = false)
+    public String roleString;
+
+    @Transient
+    public UserRole getRole() {
+        return UserRole.valueOf(roleString);
+    }
+
+    public void setRole(UserRole role) {
+        this.roleString = role.name();
+    }
 }
