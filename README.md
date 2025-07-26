@@ -18,6 +18,7 @@ See application.properties (quarkus.datasource.devservices.*) for DB credentials
 - Debugger for Java
 - Maven for Java
 - Quarkus
+- httpYac - Rest Client
 - and much more...
 
 ## History

@@ -1,0 +1,92 @@
+### TESTING ENDPOINTS
+
+
+### List chatroom types | USER: 200 OK
+GET {{url}}/chat/rooms
+Authorization: Basic {{user}}
+
+### List chatroom types | OPERATOR: 200 OK
+GET {{url}}/chat/rooms
+Authorization: Basic {{operator}}
+
+### New chat | USER: 200 OK
+POST {{url}}/chat
+Authorization: Basic {{user}}
+{
+  "room": "TECH",
+  "message": "Test"
+}
+POST {{url}}/chat
+Authorization: Basic {{user}}
+{
+  "room": "TECH",
+  "message": "Test2"
+}
+
+### New chat | OPERATOR: 403 Forbidden
+POST {{url}}/chat
+Authorization: Basic {{operator}}
+{
+  "room": "TECH",
+  "message": "Test3"
+}
+
+### Get chat (messages) | USER: 200 OK
+GET {{url}}/chat/1
+Authorization: Basic {{user}}
+
+### Get chat (messages) | OPERATOR: 200 OK
+GET {{url}}/chat/2
+Authorization: Basic {{operator}}
+
+### Send message to existing chat | USER: 201 Created
+POST {{url}}/chat/1
+Authorization: Basic {{user}}
+{
+  "content": "Hello, is anyone there?"
+}
+
+### Send message to unclaimed chat | OPERATOR: 403 Forbidden
+POST {{url}}/chat/1
+Authorization: Basic {{operator}}
+{
+  "content": "Jean Luc Picard here, how can I help you?"
+}
+
+### Get all 'any status' chats | USER: 403 Forbidden
+GET {{url}}/chat?status=WAITING
+Authorization: Basic {{user}}
+
+### Get all WAITING chats | OPERATOR: 200 OK
+GET {{url}}/chat?status=WAITING
+Authorization: Basic {{operator}}
+
+### Claim chat | USER: 403 Forbidden
+POST {{url}}/chat/1/claim
+Authorization: Basic {{user}}
+
+### Claim WAITING chat | OPERATOR: 200 OK
+POST {{url}}/chat/1/claim
+Authorization: Basic {{operator}}
+
+### Claim CLAIMED chat | OPERATOR: 400 Bad request
+POST {{url}}/chat/1/claim
+Authorization: Basic {{operator}}
+
+### Get all OWNED CLAIMED chats | OPERATOR: 200 OK
+GET {{url}}/chat?status=CLAIMED
+Authorization: Basic {{operator}}
+
+### Close OWNED chat | OPERATOR: 200 OK
+POST {{url}}/chat/1/close
+Authorization: Basic {{operator}}
+
+### Close NOT-OWNED chat | OPERATOR: 403 Forbidden
+POST {{url}}/chat/2/close
+Authorization: Basic {{operator}}
+
+### Get all OWNED CLOSED chats | OPERATOR: 200 OK
+GET {{url}}/chat?status=CLOSED
+Authorization: Basic {{auth}}
+
+###
